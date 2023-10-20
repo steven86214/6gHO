@@ -11,6 +11,6 @@ t = [[1,2,3],[4,5,6]]
 t1 = [[7,8,9],[10,11,12]]
 g = torch.FloatTensor(t)
 g1 = torch.FloatTensor(t1)
-h = torch.cat((g,g1),1)
+h = torch.cat((g,g1),2)
 #.to(ppo_device)
 print(h)
