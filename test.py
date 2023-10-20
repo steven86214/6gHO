@@ -8,5 +8,6 @@ if(torch.cuda.is_available()):
 else:
     print("Device set to : cpu")
 t = [1,2,3]
-g = torch.FloatTensor(t).to(ppo_device)
+g = torch.FloatTensor(t)
+#.to(ppo_device)
 print(g)
