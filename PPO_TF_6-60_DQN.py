@@ -328,7 +328,7 @@ Num_of_UE=1
 s= 3
 num_of_channel =5
 e_greedy =0.30
-#e_greedy =0
+#e_greedy =0  #always random
 # training part
 time_step=0
 max_training_timesteps=0
