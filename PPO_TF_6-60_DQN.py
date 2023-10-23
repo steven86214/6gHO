@@ -392,11 +392,11 @@ while time_step <= max_training_timesteps:
 # In[ ]:
 
 
-# for i in range(0,6):
-#     print(t_agent.buffer.rewards[i])
+for i in range(0,6):
+    print(t_agent.buffer.rewards[i])
 
-for i in t_agent.buffer.rewards:
-    print(i)
+# for i in t_agent.buffer.rewards:
+#     print(i)
 
 
 # In[ ]:
