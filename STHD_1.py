@@ -1395,9 +1395,9 @@ def sim(algo, algo_name, timeslot, carrier_bandwidth, num_of_UE, demand, num_of_
         
         
         
-        # if i %100 == 0 and i !=0 and E !=0:
-        #     print('Updating...{}'.format(i))
-        #     RL_Agent.update()
+        if i %2000 == 0 and i !=0 and E !=0:
+            print('Updating...{}'.format(i))
+            RL_Agent.update()
            
             
         v_time= cul_time_table[i]
@@ -1559,8 +1559,8 @@ def sim(algo, algo_name, timeslot, carrier_bandwidth, num_of_UE, demand, num_of_
                     ## handover event trigger
                     if angle_time_table[i][obj_UE[j].s_cell['cell_ID'][0]] > obj_UE[j].min_angle or  angle_time_table[i][obj_UE[j].s_cell['cell_ID'][0]]==-1: 
                         obj_UE[j].A2_event = obj_UE[j].handover(RL_Agent, PPO_input,num_of_UE, num_of_st, servering_st, c_st, E)
-                    #else:
-                    #    pass
+                    else:
+                       pass
                     #A2_Event = obj_UE[j].handover(RL_Agent, PPO_input)
                     
             record_HO(j, record_UE_data, obj_UE)
