@@ -1537,23 +1537,23 @@ def sim(algo, algo_name, timeslot, carrier_bandwidth, num_of_UE, demand, num_of_
                     else:
                         pass
                 else:
-                    #if angle_time_table[i] > obj_UE[j].min_angle 
-                    
-                    PPO_input = []
-                    for k in range(num_of_st):
+                    if angle_time_table[i] > obj_UE[j].min_angle:
                         
-                        PPO_input.append(cover[k])
+                        PPO_input = []
+                        for k in range(num_of_st):
+                            
+                            PPO_input.append(cover[k])
+                            
+                        for k in range(num_of_st):
+                            
+                            #PPO_input.append(servering_st[k])
+                            PPO_input.append(servering_st[k]/node_capacity)
+                            
+                        #print(PPO_input[298:])
+                            
+                        for k in range(num_of_st):
                         
-                    for k in range(num_of_st):
-                        
-                        #PPO_input.append(servering_st[k])
-                        PPO_input.append(servering_st[k]/node_capacity)
-                        
-                    #print(PPO_input[298:])
-                        
-                    for k in range(num_of_st):
-                    
-                        PPO_input.append(v_time[k])
+                            PPO_input.append(v_time[k])
 
                     #print('state: '+str(PPO_input))
                     ## handover event trigger
