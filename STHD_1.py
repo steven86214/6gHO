@@ -1574,7 +1574,8 @@ def sim(algo, algo_name, timeslot, carrier_bandwidth, num_of_UE, demand, num_of_
             #print('UE_time')
             #print(obj_UE[j].time)
             #print(obj_UE[j].angle)
-
+        #servering_st : num of ue in cell
+        #block table : if the st Overload?
         servering_st, block_rate, block_table = calc_num_of_ue_in_cell(obj_UE, num_of_UE, num_of_st, node_capacity)
         
         #print(block_rate)
@@ -1862,8 +1863,8 @@ def sim(algo, algo_name, timeslot, carrier_bandwidth, num_of_UE, demand, num_of_
     
     BBB =totall_block/sim_time
     HHH =Total_HO_count/num_of_UE
-    print(Total_HO_count/num_of_UE)
-    print(totall_block/sim_time)
+    print("Total_HO_count/num_of_UE", Total_HO_count/num_of_UE)
+    print("totall_block/sim_time", totall_block/sim_time)
         # re.append(Total_resource/num_of_UE/15)
 
     print(datetime.datetime.now())
