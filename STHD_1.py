@@ -1395,7 +1395,7 @@ def sim(algo, algo_name, timeslot, carrier_bandwidth, num_of_UE, demand, num_of_
         
         
         
-        if i %1000 == 0 and i !=0 and E !=0:
+        if i %100 == 0 and i !=0 and E !=0:
             print('Updating...{}'.format(i))
             RL_Agent.update()
            
@@ -1559,6 +1559,7 @@ def sim(algo, algo_name, timeslot, carrier_bandwidth, num_of_UE, demand, num_of_
                     ## handover event trigger
                     if angle_time_table[i][obj_UE[j].s_cell['cell_ID'][0]] > obj_UE[j].min_angle or  angle_time_table[i][obj_UE[j].s_cell['cell_ID'][0]]==-1: 
                         handoverTimes += 1
+                        print(handoverTimes ," handover triggr at time ",i)
                         obj_UE[j].A2_event = obj_UE[j].handover(RL_Agent, PPO_input,num_of_UE, num_of_st, servering_st, c_st, E)
                     else:
                        pass
