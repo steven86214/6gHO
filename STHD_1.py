@@ -1395,7 +1395,7 @@ def sim(algo, algo_name, timeslot, carrier_bandwidth, num_of_UE, demand, num_of_
         
         
         
-        if i %100 == 0 and i !=0 and E !=0:
+        if i %1000 == 0 and i !=0 and E !=0:
             print('Updating...{}'.format(i))
             RL_Agent.update()
            
