@@ -1832,6 +1832,8 @@ def sim(algo, algo_name, timeslot, carrier_bandwidth, num_of_UE, demand, num_of_
         ###if i % int(sim_time/10) == 0 and i != 0:
         ###    print(f'sim_time_percentage: {int(i/sim_time*100)}%')
 
+
+    print("total HO times" + handoverTimes)
     print(f'sim_time_percentage: {int(sim_time/sim_time*100)}%')
     #print('ser_UE: ' + str(servering_st))
     
