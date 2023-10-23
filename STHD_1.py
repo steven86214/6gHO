@@ -1537,8 +1537,8 @@ def sim(algo, algo_name, timeslot, carrier_bandwidth, num_of_UE, demand, num_of_
                     else:
                         pass
                 else:
-                    if angle_time_table[i] > obj_UE[j].min_angle:
-                        
+                    #if angle_time_table[i] > obj_UE[j].min_angle 
+                    if angle_time_table[i][obj_UE[j].s_cell['cell_ID'][0]] > obj_UE[j].min_angle or  angle_time_table[i][obj_UE[j].s_cell['cell_ID'][0]]==-1: 
                         PPO_input = []
                         for k in range(num_of_st):
                             
@@ -1555,9 +1555,8 @@ def sim(algo, algo_name, timeslot, carrier_bandwidth, num_of_UE, demand, num_of_
                         
                             PPO_input.append(v_time[k])
 
-                    #print('state: '+str(PPO_input))
-                    ## handover event trigger
-                    if angle_time_table[i][obj_UE[j].s_cell['cell_ID'][0]] > obj_UE[j].min_angle or  angle_time_table[i][obj_UE[j].s_cell['cell_ID'][0]]==-1: 
+                        #print('state: '+str(PPO_input))
+                        ## handover event trigger
                         obj_UE[j].A2_event = obj_UE[j].handover(RL_Agent, PPO_input,num_of_UE, num_of_st, servering_st, c_st, E)
                     else:
                        pass
