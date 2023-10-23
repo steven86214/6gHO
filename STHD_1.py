@@ -993,9 +993,9 @@ def Rewards_cal(obj_UE, num_of_UE, num_of_cell_block, connect_table, v_table, ti
         
         st_ID= obj_UE[i].s_cell['cell_ID'][0]
         
-        #print(num_of_cell_block)
-        #print('-----')
-        #print(st_ID)
+        print(num_of_cell_block)
+        print('-----')
+        print(st_ID)
         
         if num_of_cell_block[st_ID]==1:
             
