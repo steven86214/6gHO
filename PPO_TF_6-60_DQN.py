@@ -321,7 +321,7 @@ print("save checkpoint path : " + checkpoint_path)
 
 Timeslot=1000
 Carrier_bandwidth=200
-Time=7200
+Time=3600
 #Time=1000
 power = 35
 Num_of_UE=1
