@@ -987,7 +987,7 @@ def calc_num_of_ue_in_cell(obj_UE, num_of_UE, num_of_st, node_capacity):
     
     return num_of_ue_in_cell, block_rate, num_of_cell_block
 
-def Rewards_cal(obj_UE, num_of_UE, num_of_cell_block, connect_table, v_table, time, RL_Agent):
+def Rewards_cal(obj_UE, num_of_UE, num_of_cell_block,servering_st,L, connect_table, v_table, time, RL_Agent):
 
     for i in range(num_of_UE):
         
@@ -999,7 +999,10 @@ def Rewards_cal(obj_UE, num_of_UE, num_of_cell_block, connect_table, v_table, ti
         
         if num_of_cell_block[st_ID]==1:
             
-            reward = -10
+            # reward = -10
+            BR= (servering_st[i]-L)/L
+            reward = -(BR/v_table[time][st_ID])*1000
+            print("overload and the reword = ",reward)
             
         elif num_of_cell_block[st_ID]==0:   
             
@@ -1526,7 +1529,7 @@ def sim(algo, algo_name, timeslot, carrier_bandwidth, num_of_UE, demand, num_of_
                     #print('------------------')
                     #print( obj_UE[j].min_angle)
                     
-                    if angle_time_table[i][obj_UE[j].s_cell['cell_ID'][0]] > obj_UE[j].min_angle or                    angle_time_table[i][obj_UE[j].s_cell['cell_ID'][0]]==-1: 
+                    if angle_time_table[i][obj_UE[j].s_cell['cell_ID'][0]] > obj_UE[j].min_angle or angle_time_table[i][obj_UE[j].s_cell['cell_ID'][0]]==-1: 
                     
                         obj_UE[j].handover(cul_time_table, servering_st,con_time_table, angle_time_table, node_capacity)
                         #print('time')
@@ -1583,7 +1586,7 @@ def sim(algo, algo_name, timeslot, carrier_bandwidth, num_of_UE, demand, num_of_
         
         if RL_Agent != None:
         
-            Rewards_cal(obj_UE, num_of_UE, block_table, con_time_table, cul_time_table, i, RL_Agent)
+            Rewards_cal(obj_UE, num_of_UE, block_table,servering_st, node_capacity,  con_time_table, cul_time_table, i, RL_Agent)
         else:
             pass
         
