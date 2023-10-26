@@ -1000,7 +1000,7 @@ def Rewards_cal(obj_UE, num_of_UE, num_of_cell_block,servering_st,L, connect_tab
         if num_of_cell_block[st_ID]==1:
             
             # reward = -10
-            BR= (servering_st[i]-L)/L
+            BR= (servering_st[st_ID]-L)/L
             reward = -(BR/v_table[time][st_ID])*1000
             print("bR",BR)
             print("v_table[time][st_ID]",v_table[time][st_ID])
