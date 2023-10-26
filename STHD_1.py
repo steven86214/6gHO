@@ -993,9 +993,9 @@ def Rewards_cal(obj_UE, num_of_UE, num_of_cell_block,servering_st,L, connect_tab
         
         st_ID= obj_UE[i].s_cell['cell_ID'][0]
         
-        print(num_of_cell_block)
-        print('-----')
-        print(st_ID)
+        # print(num_of_cell_block)
+        # print('-----')
+        # print(st_ID)
         
         if num_of_cell_block[st_ID]==1:
             
@@ -1562,7 +1562,7 @@ def sim(algo, algo_name, timeslot, carrier_bandwidth, num_of_UE, demand, num_of_
                     ## handover event trigger
                     if angle_time_table[i][obj_UE[j].s_cell['cell_ID'][0]] > obj_UE[j].min_angle or  angle_time_table[i][obj_UE[j].s_cell['cell_ID'][0]]==-1: 
                         handoverTimes += 1
-                        print(handoverTimes ," handover triggr at time ",i)
+                        # print(handoverTimes ," handover triggr at time ",i)
                         obj_UE[j].A2_event = obj_UE[j].handover(RL_Agent, PPO_input,num_of_UE, num_of_st, servering_st, c_st, E)
                     else:
                        pass
