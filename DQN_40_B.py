@@ -642,7 +642,6 @@ print("=========================================================================
 
 
 ####### initialize environment hyperparameters ######
-
 #env_name = "CartPole-v1"
 #env_name = "MountainCar-v0"
 #has_continuous_action_space = False

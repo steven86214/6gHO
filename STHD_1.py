@@ -1397,7 +1397,7 @@ def sim(algo, algo_name, timeslot, carrier_bandwidth, num_of_UE, demand, num_of_
         #print(servering_st)
         
         
-        if RL_Agent.getStateSize() % 100 == 0 and RL_Agent.getStateSize() !=0 and E !=0:
+        if RL_Agent.getStatesSize() % 100 == 0 and RL_Agent.getStatesSize() !=0 and E !=0:
             RL_Agent.update()
         # if i %100 == 0 and i !=0 and E !=0:
         #     print('Updating...{}'.format(i))
