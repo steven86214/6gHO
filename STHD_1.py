@@ -1567,12 +1567,9 @@ def sim(algo, algo_name, timeslot, carrier_bandwidth, num_of_UE, demand, num_of_
                         handoverTimes += 1
                         # print(handoverTimes ," handover triggr at time ",i)
                         obj_UE[j].A2_event = obj_UE[j].handover(RL_Agent, PPO_input,num_of_UE, num_of_st, servering_st, c_st, E)
-                    else:
-                       pass
-                    if RL_Agent != None:
                         Rewards_cal(obj_UE[j], num_of_UE, block_table,servering_st, node_capacity,  con_time_table, cul_time_table, i, RL_Agent)
                     else:
-                        pass
+                       pass
                     #A2_Event = obj_UE[j].handover(RL_Agent, PPO_input)
                     
             record_HO(j, record_UE_data, obj_UE)
