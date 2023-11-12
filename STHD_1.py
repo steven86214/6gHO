@@ -1398,10 +1398,10 @@ def sim(algo, algo_name, timeslot, carrier_bandwidth, num_of_UE, demand, num_of_
         
         #print(servering_st)
         
-        
-        if len(RL_Agent.buffer.rewards) % 100 == 0 and len(RL_Agent.buffer.rewards) !=0 and E !=0 and RL_Agent != None:
-            print('Updating...{}'.format(RL_Agent.getStatesSize()))
-            RL_Agent.update()
+        if RL_Agent != None:
+            if len(RL_Agent.buffer.rewards) % 100 == 0 and len(RL_Agent.buffer.rewards) !=0 and E !=0
+                print('Updating...{}'.format(RL_Agent.getStatesSize()))
+                RL_Agent.update()
 
         # if i %100 == 0 and i !=0 and E !=0:
         #     print('Updating...{}'.format(i))
