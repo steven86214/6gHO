@@ -368,7 +368,8 @@ while time_step <= max_training_timesteps:
     
     
     time_step +=1
-    t_agent.time_step = time_step
+    if t_agent!=None:
+        t_agent.time_step = time_step
     '''
     #qv.append(fq)
     
