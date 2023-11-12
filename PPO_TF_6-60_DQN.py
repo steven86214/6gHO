@@ -335,7 +335,7 @@ e_greedy =0.30
 #e_greedy =0  #always random
 # training part
 time_step=0
-max_training_timesteps=1000
+max_training_timesteps=500
 update_timestep=1
 save_model_freq=1
 
