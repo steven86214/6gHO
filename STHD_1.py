@@ -1397,9 +1397,7 @@ def sim(algo, algo_name, timeslot, carrier_bandwidth, num_of_UE, demand, num_of_
         #print(servering_st)
         
         
-        if RL_Agent.getStatesSize() % 100 == 0 and RL_Agent.getStatesSize() !=0 and E !=0:
-            print('Updating...{}'.format(RL_Agent.getStatesSize()))
-            RL_Agent.update()
+
             
         # if i %100 == 0 and i !=0 and E !=0:
         #     print('Updating...{}'.format(i))
@@ -1843,6 +1841,10 @@ def sim(algo, algo_name, timeslot, carrier_bandwidth, num_of_UE, demand, num_of_
 
     for j in range(num_of_UE):
         Rewards_cal(obj_UE[j], num_of_UE, block_table,servering_st, node_capacity,  con_time_table, cul_time_table, i, RL_Agent)
+
+    if RL_Agent.getStatesSize() !=0 and E !=0:
+        print('Updating...{}'.format(RL_Agent.getStatesSize()))
+        RL_Agent.update()
     print("total HO times" , handoverTimes)
     print(f'sim_time_percentage: {int(sim_time/sim_time*100)}%')
     #print('ser_UE: ' + str(servering_st))
