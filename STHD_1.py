@@ -989,38 +989,36 @@ def calc_num_of_ue_in_cell(obj_UE, num_of_UE, num_of_st, node_capacity):
 
 def Rewards_cal(obj_UE, num_of_UE, num_of_cell_block,servering_st,L, connect_table, v_table, time, RL_Agent):
 
-    for i in range(num_of_UE):
+    st_ID= obj_UE.s_cell['cell_ID'][0]
+    
+    # print(num_of_cell_block)
+    # print('-----')
+    # print(st_ID)
+    
+    if num_of_cell_block[st_ID]==1:
         
-        st_ID= obj_UE[i].s_cell['cell_ID'][0]
+        # reward = -10
+        BR= (servering_st[st_ID]-L)/L
+        reward = -(BR/v_table[time][st_ID])*1000
+        print("bR",BR)
+        print("v_table[time][st_ID]",v_table[time][st_ID])
+        print("overload and the reword = ",reward)
         
-        # print(num_of_cell_block)
-        # print('-----')
-        # print(st_ID)
+    elif num_of_cell_block[st_ID]==0:   
         
-        if num_of_cell_block[st_ID]==1:
+        if connect_table[time][st_ID] ==0:
             
-            # reward = -10
-            BR= (servering_st[st_ID]-L)/L
-            reward = -(BR/v_table[time][st_ID])*1000
-            print("bR",BR)
-            print("v_table[time][st_ID]",v_table[time][st_ID])
-            print("overload and the reword = ",reward)
+            reward = -20
+        
+        elif connect_table[time][st_ID]==1: 
             
-        elif num_of_cell_block[st_ID]==0:   
-            
-            if connect_table[time][st_ID] ==0:
-                
-                reward = -20
-            
-            elif connect_table[time][st_ID]==1: 
-                
-                reward = v_table[time][st_ID]
-            else:
-                print('v or cover_ERROR')
+            reward = v_table[time][st_ID]
         else:
-            print('connect Not 0 or 1')
-            
-        RL_Agent.buffer.rewards.append(reward)
+            print('v or cover_ERROR')
+    else:
+        print('connect Not 0 or 1')
+        
+    RL_Agent.buffer.rewards.append(reward)
 
 
 # In[5]:
@@ -1399,10 +1397,11 @@ def sim(algo, algo_name, timeslot, carrier_bandwidth, num_of_UE, demand, num_of_
         #print(servering_st)
         
         
-        
-        if i %1000 == 0 and i !=0 and E !=0:
-            print('Updating...{}'.format(i))
+        if RL_Agent.getStateSize() % 100 == 0 and RL_Agent.getStateSize() !=0 and E !=0:
             RL_Agent.update()
+        # if i %100 == 0 and i !=0 and E !=0:
+        #     print('Updating...{}'.format(i))
+        #     RL_Agent.update()
            
             
         v_time= cul_time_table[i]
@@ -1568,6 +1567,10 @@ def sim(algo, algo_name, timeslot, carrier_bandwidth, num_of_UE, demand, num_of_
                         obj_UE[j].A2_event = obj_UE[j].handover(RL_Agent, PPO_input,num_of_UE, num_of_st, servering_st, c_st, E)
                     else:
                        pass
+                    if RL_Agent != None:
+                        Rewards_cal(obj_UE[j], num_of_UE, block_table,servering_st, node_capacity,  con_time_table, cul_time_table, i, RL_Agent)
+                    else:
+                        pass
                     #A2_Event = obj_UE[j].handover(RL_Agent, PPO_input)
                     
             record_HO(j, record_UE_data, obj_UE)
@@ -1586,11 +1589,7 @@ def sim(algo, algo_name, timeslot, carrier_bandwidth, num_of_UE, demand, num_of_
         #print(block_rate)
         totall_block+= block_rate
         
-        if RL_Agent != None:
         
-            Rewards_cal(obj_UE, num_of_UE, block_table,servering_st, node_capacity,  con_time_table, cul_time_table, i, RL_Agent)
-        else:
-            pass
         
         
         #A_BW = Allow_Bandwidth(carrier_bandwidth, servering_cell, num_of_micro)

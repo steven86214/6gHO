@@ -326,12 +326,16 @@ Time=3600
 power = 35
 Num_of_UE=10
 s= 3
+#s=1, Max_serving_time
+#s=2, Max_node_capacity
+#s=3, Random_ST
+#s=4, graph
 num_of_channel =5
 e_greedy =0.30
 #e_greedy =0  #always random
 # training part
 time_step=0
-max_training_timesteps=0
+max_training_timesteps=1000
 update_timestep=1
 save_model_freq=1
 

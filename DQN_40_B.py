@@ -300,7 +300,6 @@ class PPO:
             print("WARNING : Calling PPO::set_action_std() on discrete action space policy")
             print("--------------------------------------------------------------------------------------------")
 
-
     def decay_action_std(self, action_std_decay_rate, min_action_std):
         print("--------------------------------------------------------------------------------------------")
 
@@ -318,6 +317,9 @@ class PPO:
             print("WARNING : Calling PPO::decay_action_std() on discrete action space policy")
 
         print("--------------------------------------------------------------------------------------------")
+    
+    def getStatesSize(self):
+        return len(self.buffer.states)
 
 
     #def select_action(self, state, timestep, th, graph_edge, node_features,new_graph_edge, num_of_UE, num_of_micro):
