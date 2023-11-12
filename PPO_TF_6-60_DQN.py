@@ -260,7 +260,7 @@ Demand=20
 
 
 Num_of_st=298
-Num_of_UE=40
+Num_of_UE=10
 Demand=50
 #119+18 = 137
 #168+18
