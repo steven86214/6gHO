@@ -1884,8 +1884,8 @@ def sim(algo, algo_name, timeslot, carrier_bandwidth, num_of_UE, demand, num_of_
     HHH =Total_HO_count/num_of_UE
     print("Total_HO_count/num_of_UE", Total_HO_count/num_of_UE)
     print("totall_block/sim_time", totall_block/sim_time)
-    with open('./data/result.csv','w',newline='') as csvfile:
-        writer = csv.writer(csvfile, delimiter=' ',
+    with open('./data/result.csv','a',newline='') as csvfile:
+        writer = csv.writer(csvfile, delimiter=',',
                             quotechar='|',quoting=csv.QUOTE_MINIMAL)
         writer.writerow([BBB]+[HHH])
         # re.append(Total_resource/num_of_UE/15)
