@@ -1575,6 +1575,7 @@ def sim(algo, algo_name, timeslot, carrier_bandwidth, num_of_UE, demand, num_of_
                         Rewards_cal(obj_UE[j], num_of_UE, block_table,servering_st, node_capacity,  con_time_table, cul_time_table, i, RL_Agent)
                     else:
                        pass
+
                     #A2_Event = obj_UE[j].handover(RL_Agent, PPO_input)
                     
             record_HO(j, record_UE_data, obj_UE)
@@ -1845,9 +1846,9 @@ def sim(algo, algo_name, timeslot, carrier_bandwidth, num_of_UE, demand, num_of_
 
 
     
-    if RL_Agent != None:
-        for j in range(num_of_UE):
-            Rewards_cal(obj_UE[j], num_of_UE, block_table,servering_st, node_capacity,  con_time_table, cul_time_table, i, RL_Agent)
+    # if RL_Agent != None:
+    #     for j in range(num_of_UE):
+    #         Rewards_cal(obj_UE[j], num_of_UE, block_table,servering_st, node_capacity,  con_time_table, cul_time_table, i, RL_Agent)
     print("total HO times" , handoverTimes)
     print(f'sim_time_percentage: {int(sim_time/sim_time*100)}%')
     #print('ser_UE: ' + str(servering_st))
