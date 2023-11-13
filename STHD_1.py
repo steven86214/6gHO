@@ -1460,6 +1460,7 @@ def sim(algo, algo_name, timeslot, carrier_bandwidth, num_of_UE, demand, num_of_
                     #print(PPO_input[596:])
                     
                     obj_UE[j].init_connect_cell(RL_Agent, PPO_input, num_of_UE, num_of_st, angle_time_table, servering_st, c_st, E)
+                    Rewards_cal(obj_UE[j], num_of_UE, block_table,servering_st, node_capacity,  con_time_table, cul_time_table, i, RL_Agent)
                     
                  
                     if(RL_Agent != None):
