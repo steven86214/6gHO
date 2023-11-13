@@ -32,7 +32,8 @@ class PPO_TF_HO_Algo(Dual_Connect.Handover):
     def init_connect_cell(self, RL_Agent:Type[PPO_A2C_SEQ.PPO], RL_input, num_of_UE, num_of_st, angle_time_table,                         servering_st, c_st, E):
         
         done = False
-                    
+        print("self.time",self.time)
+        input()
         action = RL_Agent.select_action(RL_input, self.time, num_of_UE, num_of_st, c_st ,E)
         
         
@@ -325,7 +326,7 @@ Time=3600
 #Time=1000
 power = 35
 Num_of_UE=10
-s= 2
+s= 3
 #s=1, Max_serving_time
 #s=2, Max_node_capacity
 #s=3, Random_ST
