@@ -1924,7 +1924,8 @@ def sim(algo, algo_name, timeslot, carrier_bandwidth, num_of_UE, demand, num_of_
         print(len(RL_Agent.buffer.is_terminals))
         #print(len(RL_Agent.buffer.UE_ID))
         print('##########################')
-        RL_Agent.buffer.is_terminals.pop()
+        if len(RL_Agent.buffer.is_terminals) > 0:
+            RL_Agent.buffer.is_terminals.pop()
         RL_Agent.buffer.is_terminals.append(True)
         #print('reward')
         #print(RL_Agent.buffer.rewards)
