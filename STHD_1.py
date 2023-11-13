@@ -941,8 +941,9 @@ def calc_num_of_ue_in_cell(obj_UE, num_of_UE, num_of_st, node_capacity):
     
     for i in range(num_of_UE):
         for j in obj_UE[i].s_cell['cell_ID']:
-            #print(j)
+            print("int or list",j)
             # for j in multi_process_list[i].s_cell['cell_ID']:
+            print (j)
             if j != None:
                 #print('y')
                 num_of_ue_in_cell[int(j)] += 1
@@ -1571,10 +1572,11 @@ def sim(algo, algo_name, timeslot, carrier_bandwidth, num_of_UE, demand, num_of_
                     #print('state: '+str(PPO_input))
                     ## handover event trigger
                     if angle_time_table[i][obj_UE[j].s_cell['cell_ID'][0]] > obj_UE[j].min_angle or  angle_time_table[i][obj_UE[j].s_cell['cell_ID'][0]]==-1: 
-                        servering_st, block_rate, block_table = calc_num_of_ue_in_cell(obj_UE, num_of_UE, num_of_st, node_capacity)
+                        
                         handoverTimes += 1
                         # print(handoverTimes ," handover triggr at time ",i)
                         obj_UE[j].A2_event = obj_UE[j].handover(RL_Agent, PPO_input,num_of_UE, num_of_st, servering_st, c_st, E)
+                        servering_st, block_rate, block_table = calc_num_of_ue_in_cell(obj_UE, num_of_UE, num_of_st, node_capacity)
                         Rewards_cal(obj_UE[j], num_of_UE, block_table,servering_st, node_capacity,  con_time_table, cul_time_table, i, RL_Agent)
                     else:
                        pass
