@@ -333,10 +333,10 @@ class PPO:
             with torch.no_grad():
                 state = torch.FloatTensor(state).to(self.device)
                 action, action_logprob = self.policy_old.act(state)
-
-            self.buffer.states.append(state)
-            self.buffer.actions.append(action)
-            self.buffer.logprobs.append(action_logprob)
+            if timestep > 0:
+                self.buffer.states.append(state)
+                self.buffer.actions.append(action)
+                self.buffer.logprobs.append(action_logprob)
 
             return action.detach().cpu().numpy().flatten()
 
@@ -399,8 +399,8 @@ class PPO:
                     ac[eg]=1
                     ac_t = torch.FloatTensor(ac).to(self.device)
                     new1 = torch.cat((state_0,ac_t),0)
-                    
-                    self.buffer.states.append(new1)
+                    if timestep > 0:
+                        self.buffer.states.append(new1)
                     fin_ac = eg
                     
                 else:
@@ -432,8 +432,9 @@ class PPO:
                     ac =[0]*num_of_st    
                     ac[max_ac]=1
                     ac_t = torch.FloatTensor(ac).to(self.device)
-                    new1 = torch.cat((state_0,ac_t),0)    
-                    self.buffer.states.append(new1)
+                    new1 = torch.cat((state_0,ac_t),0)
+                    if timestep > 0:
+                        self.buffer.states.append(new1)
                     fin_ac = max_ac
                     #print('____')
                     

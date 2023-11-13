@@ -33,7 +33,7 @@ class PPO_TF_HO_Algo(Dual_Connect.Handover):
         
         done = False
         print("self.time",self.time)
-        input()
+        # input()
         action = RL_Agent.select_action(RL_input, self.time, num_of_UE, num_of_st, c_st ,E)
         
         
