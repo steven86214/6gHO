@@ -943,7 +943,8 @@ def calc_num_of_ue_in_cell(obj_UE, num_of_UE, num_of_st, node_capacity):
         for j in obj_UE[i].s_cell['cell_ID']:
             print("int or list",j)
             # for j in multi_process_list[i].s_cell['cell_ID']:
-            print (j)
+            if j == []:
+                print ('empty')
             if j != None:
                 #print('y')
                 num_of_ue_in_cell[int(j)] += 1
