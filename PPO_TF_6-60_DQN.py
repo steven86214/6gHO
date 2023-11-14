@@ -371,7 +371,7 @@ while time_step <= max_training_timesteps:
     time_step +=1
     if t_agent!=None:
         t_agent.time_step = time_step
-    if (time_step>0 and time_step% save_model_freq) == 0:
+    if time_step>0 and time_step% save_model_freq == 0:
         print("--------------------------------------------------------------------------------------------")
         print("saving model at : " + checkpoint_path)
         t_agent.save(checkpoint_path)
