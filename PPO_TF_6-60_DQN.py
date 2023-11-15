@@ -331,11 +331,11 @@ s= 3
 #s=3, Random_ST
 #s=4, graph
 num_of_channel =5
-e_greedy =0.10
-#e_greedy =0  #always random
+e_greedy =0
+#e_greedy = 1  #always random
 # training part
 time_step=0
-max_training_timesteps=500
+max_training_timesteps=100
 update_timestep=1
 save_model_freq=10
 
