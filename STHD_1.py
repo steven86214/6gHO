@@ -984,7 +984,7 @@ def calc_num_of_ue_in_cell(obj_UE, num_of_UE, num_of_st, node_capacity):
     #print('-=-=-=-')
     #print(block_rate)
     
-    if block_count!= 0:
+    if len(block_rates)!= 0:
         block_rate = max(block_rates)
     else:
         block_rate =0
