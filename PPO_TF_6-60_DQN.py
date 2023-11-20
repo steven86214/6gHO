@@ -331,11 +331,11 @@ s= 3
 #s=3, Random_ST
 #s=4, graph
 num_of_channel =5
-e_greedy =0.1
+e_greedy =0.3
 #e_greedy = 1  #always random
 # training part
 time_step=0
-max_training_timesteps=500
+max_training_timesteps=200
 update_timestep=1
 save_model_freq=10
 
@@ -359,8 +359,8 @@ Rand = 1
 # t_agent = None
 while time_step <= max_training_timesteps:
     #Rand = random.randint(1,10) 
-    if time_step == 400:
-        e_greedy-=0.1
+    if time_step == 150:
+        e_greedy-=0.3
     # if time_step == 200:
     #     e_greedy-=0.1
     # if time_step == 300:
