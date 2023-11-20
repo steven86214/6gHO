@@ -955,7 +955,10 @@ def calc_num_of_ue_in_cell(obj_UE, num_of_UE, num_of_st, node_capacity):
     num_of_cell_block = []
     
     block_count = 0
+
+    block_rates = []
     
+
     for i in range(num_of_st):
         
         if num_of_ue_in_cell[i]!=0:
@@ -967,7 +970,8 @@ def calc_num_of_ue_in_cell(obj_UE, num_of_UE, num_of_st, node_capacity):
             num_of_cell_block.append(1)
             
             #block_count +=1
-            block_rate+=(num_of_ue_in_cell[i]-node_capacity)/node_capacity
+            # block_rate+=(num_of_ue_in_cell[i]-node_capacity)/node_capacity
+            block_rates.append((num_of_ue_in_cell[i]-node_capacity)/node_capacity)
             #print(num_of_ue_in_cell[i])
             #print(node_capacity)
             
@@ -979,9 +983,9 @@ def calc_num_of_ue_in_cell(obj_UE, num_of_UE, num_of_st, node_capacity):
             pass
     #print('-=-=-=-')
     #print(block_rate)
-        
+    
     if block_count!= 0:
-        block_rate =block_rate/block_count
+        block_rate = max(block_rates)
     else:
         block_rate =0
         #block_rate =block_rate/num_of_st
@@ -1402,14 +1406,14 @@ def sim(algo, algo_name, timeslot, carrier_bandwidth, num_of_UE, demand, num_of_
         
         #print(servering_st)
         
-        # if RL_Agent != None:
-        #     if len(RL_Agent.buffer.states) % 100 == 0 and len(RL_Agent.buffer.states) !=0 and E !=0:
-        #         print('Updating...{}'.format(RL_Agent.getStatesSize()))
-        #         RL_Agent.update()
+        if RL_Agent != None:
+            if len(RL_Agent.buffer.states) % 100 == 0 and len(RL_Agent.buffer.states) !=0 and E !=0:
+                print('Updating...{}'.format(RL_Agent.getStatesSize()))
+                RL_Agent.update()
 
-        if i %100 == 0 and i !=0 and E !=0:
-            print('Updating...{}'.format(i))
-            RL_Agent.update()
+        # if i %100 == 0 and i !=0 and E !=0:
+        #     print('Updating...{}'.format(i))
+        #     RL_Agent.update()
            
             
         v_time= cul_time_table[i]
@@ -1571,16 +1575,16 @@ def sim(algo, algo_name, timeslot, carrier_bandwidth, num_of_UE, demand, num_of_
 
                     #print('state: '+str(PPO_input))
                     ## handover event trigger
-                    # if angle_time_table[i][obj_UE[j].s_cell['cell_ID'][0]] > obj_UE[j].min_angle or  angle_time_table[i][obj_UE[j].s_cell['cell_ID'][0]]==-1: 
+                    if angle_time_table[i][obj_UE[j].s_cell['cell_ID'][0]] > obj_UE[j].min_angle or  angle_time_table[i][obj_UE[j].s_cell['cell_ID'][0]]==-1: 
                         
-                    #     handoverTimes += 1
-                    #     # print(handoverTimes ," handover triggr at time ",i)
-                    #     obj_UE[j].A2_event = obj_UE[j].handover(RL_Agent, PPO_input,num_of_UE, num_of_st, servering_st, c_st, E)
-                    #     servering_st, block_rate, block_table = calc_num_of_ue_in_cell(obj_UE, num_of_UE, num_of_st, node_capacity)
-                    #     Rewards_cal(obj_UE[j], num_of_UE, block_table,servering_st, node_capacity,  con_time_table, cul_time_table, i, RL_Agent)
-                    # else:
-                    #    pass
-                    obj_UE[j].A2_event = obj_UE[j].handover(RL_Agent, PPO_input,num_of_UE, num_of_st, servering_st, c_st, E)
+                        handoverTimes += 1
+                        # print(handoverTimes ," handover triggr at time ",i)
+                        obj_UE[j].A2_event = obj_UE[j].handover(RL_Agent, PPO_input,num_of_UE, num_of_st, servering_st, c_st, E)
+                        servering_st, block_rate, block_table = calc_num_of_ue_in_cell(obj_UE, num_of_UE, num_of_st, node_capacity)
+                        Rewards_cal(obj_UE[j], num_of_UE, block_table,servering_st, node_capacity,  con_time_table, cul_time_table, i, RL_Agent)
+                    else:
+                       pass
+                    # obj_UE[j].A2_event = obj_UE[j].handover(RL_Agent, PPO_input,num_of_UE, num_of_st, servering_st, c_st, E)
 
                     #A2_Event = obj_UE[j].handover(RL_Agent, PPO_input)
                     
@@ -1600,11 +1604,11 @@ def sim(algo, algo_name, timeslot, carrier_bandwidth, num_of_UE, demand, num_of_
         #print(block_rate)
         totall_block+= block_rate
         
-        if RL_Agent != None:
-            for j in range(num_of_UE):
-                Rewards_cal(obj_UE[j], num_of_UE, block_table,servering_st, node_capacity,  con_time_table, cul_time_table, i, RL_Agent)
-        else:
-            pass
+        # if RL_Agent != None:
+        #     for j in range(num_of_UE):
+        #         Rewards_cal(obj_UE[j], num_of_UE, block_table,servering_st, node_capacity,  con_time_table, cul_time_table, i, RL_Agent)
+        # else:
+        #     pass
         
         
         #A_BW = Allow_Bandwidth(carrier_bandwidth, servering_cell, num_of_micro)
