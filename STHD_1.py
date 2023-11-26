@@ -956,6 +956,8 @@ def calc_num_of_ue_in_cell(obj_UE, num_of_UE, num_of_st, node_capacity):
     
     block_count = 0
 
+    max_block_rate = 0
+
     block_rates = []
     
 
@@ -970,7 +972,7 @@ def calc_num_of_ue_in_cell(obj_UE, num_of_UE, num_of_st, node_capacity):
             num_of_cell_block.append(1)
             
             #block_count +=1
-            # block_rate+=(num_of_ue_in_cell[i]-node_capacity)/node_capacity
+            block_rate+=(num_of_ue_in_cell[i]-node_capacity)/node_capacity
             block_rates.append((num_of_ue_in_cell[i]-node_capacity)/node_capacity)
             #print(num_of_ue_in_cell[i])
             #print(node_capacity)
@@ -983,14 +985,17 @@ def calc_num_of_ue_in_cell(obj_UE, num_of_UE, num_of_st, node_capacity):
             pass
     #print('-=-=-=-')
     #print(block_rate)
-    
-    if len(block_rates)!= 0:
-        block_rate = max(block_rates)
+    if block_count!= 0:
+        block_rate =block_rate/block_count
     else:
         block_rate =0
+    if len(block_rates)!= 0:
+        max_block_rate = max(block_rates)
+    else:
+        max_block_rate =0
         #block_rate =block_rate/num_of_st
     
-    return num_of_ue_in_cell, block_rate, num_of_cell_block
+    return num_of_ue_in_cell, block_rate, num_of_cell_block, max_block_rate
 
 def Rewards_cal(obj_UE, num_of_UE, num_of_cell_block,block_rate,L, connect_table, v_table, time, RL_Agent):
 
@@ -1465,7 +1470,7 @@ def sim(algo, algo_name, timeslot, carrier_bandwidth, num_of_UE, demand, num_of_
                     #print(PPO_input[596:])
                     
                     obj_UE[j].init_connect_cell(RL_Agent, PPO_input, num_of_UE, num_of_st, angle_time_table, servering_st, c_st, E)
-                    servering_st, block_rate, block_table = calc_num_of_ue_in_cell(obj_UE, num_of_UE, num_of_st, node_capacity)
+                    servering_st, block_rate, block_table, max_block_rate = calc_num_of_ue_in_cell(obj_UE, num_of_UE, num_of_st, node_capacity)
                     Rewards_cal(obj_UE[j], num_of_UE, block_table,block_rate, node_capacity,  con_time_table, cul_time_table, i, RL_Agent)
                     
                  
@@ -1580,7 +1585,7 @@ def sim(algo, algo_name, timeslot, carrier_bandwidth, num_of_UE, demand, num_of_
                         handoverTimes += 1
                         # print(handoverTimes ," handover triggr at time ",i)
                         obj_UE[j].A2_event = obj_UE[j].handover(RL_Agent, PPO_input,num_of_UE, num_of_st, servering_st, c_st, E)
-                        servering_st, block_rate, block_table = calc_num_of_ue_in_cell(obj_UE, num_of_UE, num_of_st, node_capacity)
+                        servering_st, block_rate, block_table, max_block_rate = calc_num_of_ue_in_cell(obj_UE, num_of_UE, num_of_st, node_capacity)
                         Rewards_cal(obj_UE[j], num_of_UE, block_table,block_rate, node_capacity,  con_time_table, cul_time_table, i, RL_Agent)
                     else:
                        pass
@@ -1599,7 +1604,7 @@ def sim(algo, algo_name, timeslot, carrier_bandwidth, num_of_UE, demand, num_of_
             #print(obj_UE[j].angle)
         #servering_st : num of ue in cell
         #block table : if the st Overload?
-        servering_st, block_rate, block_table = calc_num_of_ue_in_cell(obj_UE, num_of_UE, num_of_st, node_capacity)
+        servering_st, block_rate, block_table, max_block_rate = calc_num_of_ue_in_cell(obj_UE, num_of_UE, num_of_st, node_capacity)
         
         #print(block_rate)
         totall_block+= block_rate
