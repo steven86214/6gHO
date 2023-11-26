@@ -1327,6 +1327,7 @@ def sim(algo, algo_name, timeslot, carrier_bandwidth, num_of_UE, demand, num_of_
     RLF = []
     HO_N = []
     totall_block = 0
+    totall_max_block = 0
     re = []
     #algo = 'A3_HO'
     obj_UE = []
@@ -1608,6 +1609,7 @@ def sim(algo, algo_name, timeslot, carrier_bandwidth, num_of_UE, demand, num_of_
         
         #print(block_rate)
         totall_block+= block_rate
+        totall_max_block += max_block_rate
         
         # if RL_Agent != None:
         #     for j in range(num_of_UE):
@@ -1896,12 +1898,13 @@ def sim(algo, algo_name, timeslot, carrier_bandwidth, num_of_UE, demand, num_of_
     
     BBB =totall_block/sim_time
     HHH =Total_HO_count/num_of_UE
+    MMM = totall_max_block/sim_time
     print("Total_HO_count/num_of_UE", Total_HO_count/num_of_UE)
     print("totall_block/sim_time", totall_block/sim_time)
     with open('./data/result.csv','a',newline='') as csvfile:
         writer = csv.writer(csvfile, delimiter=',',
                             quotechar='|',quoting=csv.QUOTE_MINIMAL)
-        writer.writerow([BBB]+[HHH])
+        writer.writerow([BBB]+[HHH]+[MMM])
         # re.append(Total_resource/num_of_UE/15)
 
     print(datetime.datetime.now())
