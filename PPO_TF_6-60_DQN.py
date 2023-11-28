@@ -356,7 +356,7 @@ if(os.path.exists(checkpoint_path)):
 #
 Rand = 1
 
-t_agent = None
+# t_agent = None
 while time_step <= max_training_timesteps:
     #Rand = random.randint(1,10) 
     if time_step == 50:
