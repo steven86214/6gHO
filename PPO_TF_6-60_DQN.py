@@ -331,11 +331,11 @@ s= 1
 #s=3, Random_ST
 #s=4, graph
 num_of_channel =5
-e_greedy =0.1
+e_greedy =0.3
 #e_greedy = 1  #always random
 # training part
 time_step=0
-max_training_timesteps=5
+max_training_timesteps=200
 update_timestep=1
 save_model_freq=10
 
@@ -356,15 +356,15 @@ if(os.path.exists(checkpoint_path)):
 #
 Rand = 1
 
-t_agent = None
+#t_agent = None
 while time_step <= max_training_timesteps:
     #Rand = random.randint(1,10) 
+    if time_step == 50:
+        e_greedy-=0.1
+    if time_step == 100:
+        e_greedy-=0.1
     if time_step == 150:
         e_greedy-=0.1
-    # if time_step == 200:
-    #     e_greedy-=0.1
-    # if time_step == 300:
-    #     e_greedy-=0.1
     print('random'+str(Rand))
     Dual_Connect.sim(algo=PPO_TF_HO_Algo,algo_name='PPO_TF_HO_Algo',timeslot=Timeslot,                    carrier_bandwidth=Carrier_bandwidth,
                     num_of_UE=Num_of_UE,demand=Demand,num_of_st=Num_of_st,\
