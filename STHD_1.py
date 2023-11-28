@@ -985,6 +985,8 @@ def calc_num_of_ue_in_cell(obj_UE, num_of_UE, num_of_st, node_capacity):
             pass
     #print('-=-=-=-')
     #print(block_rate)
+    print("block_rate",block_rate)
+    print("block_count",block_count)
     if block_count!= 0:
         block_rate =block_rate/block_count
     else:
