@@ -157,8 +157,9 @@ class Handover:
         if self.Max_st ==1:
             
 
-            print("ssssssssssssss1")
             ID = Max_serving_time(ST_serving_table,self.time)
+            print("initial serving ID", ID)
+            print(ID)
     
 
             
