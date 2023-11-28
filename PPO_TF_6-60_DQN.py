@@ -325,7 +325,7 @@ Time=3600
 #Time=1000
 power = 35
 Num_of_UE=30
-s= 3
+s= 1
 #s=1, Max_serving_time
 #s=2, Max_node_capacity
 #s=3, Random_ST
@@ -335,7 +335,7 @@ e_greedy =0.1
 #e_greedy = 1  #always random
 # training part
 time_step=0
-max_training_timesteps=200
+max_training_timesteps=5
 update_timestep=1
 save_model_freq=10
 
@@ -356,7 +356,7 @@ if(os.path.exists(checkpoint_path)):
 #
 Rand = 1
 
-# t_agent = None
+t_agent = None
 while time_step <= max_training_timesteps:
     #Rand = random.randint(1,10) 
     if time_step == 150:
