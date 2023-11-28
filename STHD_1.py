@@ -1012,7 +1012,7 @@ def Rewards_cal(obj_UE, num_of_UE, num_of_cell_block,block_rate,L, connect_table
         
         #reward = -10
         BR= block_rate
-        reward = -((BR)/v_table[time][st_ID])*1000
+        reward = -((BR*BR)/v_table[time][st_ID])*1000
         # print("bR",BR)
         # print("v_table[time][st_ID]",v_table[time][st_ID])
         # print("overload and the reword = ",reward)
