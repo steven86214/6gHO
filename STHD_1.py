@@ -947,7 +947,7 @@ def calc_num_of_ue_in_cell(obj_UE, num_of_UE, num_of_st, node_capacity):
                 # print("not serving")
                 pass
             else:
-                print("serving cell for ",i , "is", int(j))
+                # print("serving cell for ",i , "is", int(j))
                 num_of_ue_in_cell[int(j)] += 1
                 
             
