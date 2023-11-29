@@ -331,7 +331,7 @@ s= 2
 #s=3, Random_ST
 #s=4, graph
 num_of_channel =5
-e_greedy =0.3
+e_greedy =0.1
 #e_greedy = 1  #always random
 # training part
 time_step=0
