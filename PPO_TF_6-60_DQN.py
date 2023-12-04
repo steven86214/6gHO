@@ -359,10 +359,10 @@ Rand = 1
 # t_agent = None
 while time_step <= max_training_timesteps:
     #Rand = random.randint(1,10) 
-    # if time_step == 50:
-    #     e_greedy-=0.1
-    # if time_step == 100:
-    #     e_greedy-=0.1
+    if time_step == 50:
+        e_greedy-=0.1
+    if time_step == 100:
+        e_greedy-=0.1
     if time_step == 150:
         e_greedy = 0
     print('random'+str(Rand))
