@@ -351,7 +351,7 @@ print("=========================================================================
 if(os.path.exists(checkpoint_path)):
     t_agent.load(checkpoint_path)
     print("model loaded")
-    input()
+    # input()
     #t_agent.load(checkpoint_path,reward_table_checkpoint_path,critic_checkpoint_path)
 #
 Rand = 1
