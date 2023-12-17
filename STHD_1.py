@@ -1410,7 +1410,7 @@ def sim(algo, algo_name, timeslot, carrier_bandwidth, num_of_UE, demand, num_of_
     handoverTimes = 0
     print("sim start")
     print("strategy",MAX_stage)
-    shift = 2000
+    shift = 2500
     for i in range(shift,sim_time+shift,1):
         
         #print(servering_st)
