@@ -260,7 +260,7 @@ Demand=20
 
 
 Num_of_st=298
-Num_of_UE=10
+Num_of_UE=30
 Demand=50
 #119+18 = 137
 #168+18
@@ -330,8 +330,8 @@ s= 2
 #s=2, Max_node_capacity
 #s=3, Random_ST
 #s=4, graph
-num_of_channel = 6
-e_greedy =0.1
+num_of_channel = 8
+e_greedy =0.3
 #e_greedy = 1  #always random
 # training part
 time_step=0
