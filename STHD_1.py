@@ -1432,8 +1432,10 @@ def sim(algo, algo_name, timeslot, carrier_bandwidth, num_of_UE, demand, num_of_
             if cover[c]==1:
                 c_st.append(c)
         #print('Cover: '+ str(c_st))
+        randshift = random.randint(0,20)
+
                                             
-        for j in range(num_of_UE):
+        for j in range(num_of_UE-randshift):
             #print(str(j)+' UE_A2: '+str(obj_UE[j].time) +' time: '+str(obj_UE[j].A2_index))
             
             if obj_UE[j].ini == False:
