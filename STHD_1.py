@@ -1474,9 +1474,9 @@ def sim(algo, algo_name, timeslot, carrier_bandwidth, num_of_UE, demand, num_of_
                         
                     #print(PPO_input[596:])
                     
-                    obj_UE[j].init_connect_cell(RL_Agent, PPO_input, num_of_UE, num_of_st, angle_time_table, servering_st, c_st, E)
-                    servering_st, block_rate, block_table, max_block_rate = calc_num_of_ue_in_cell(obj_UE, num_of_UE, num_of_st, node_capacity)
-                    Rewards_cal(obj_UE[j], num_of_UE, block_table,block_rate, node_capacity,  con_time_table, cul_time_table, i, RL_Agent)
+                    obj_UE[j].init_connect_cell(RL_Agent, PPO_input, num_of_UE-randshift, num_of_st, angle_time_table, servering_st, c_st, E)
+                    servering_st, block_rate, block_table, max_block_rate = calc_num_of_ue_in_cell(obj_UE, num_of_UE-randshift, num_of_st, node_capacity)
+                    Rewards_cal(obj_UE[j], num_of_UE-randshift, block_table,block_rate, node_capacity,  con_time_table, cul_time_table, i, RL_Agent)
                     
                  
                     if(RL_Agent != None):
@@ -1589,9 +1589,9 @@ def sim(algo, algo_name, timeslot, carrier_bandwidth, num_of_UE, demand, num_of_
                         
                         handoverTimes += 1
                         # print(handoverTimes ," handover triggr at time ",i)
-                        obj_UE[j].A2_event = obj_UE[j].handover(RL_Agent, PPO_input,num_of_UE, num_of_st, servering_st, c_st, E)
-                        servering_st, block_rate, block_table, max_block_rate = calc_num_of_ue_in_cell(obj_UE, num_of_UE, num_of_st, node_capacity)
-                        Rewards_cal(obj_UE[j], num_of_UE, block_table,block_rate, node_capacity,  con_time_table, cul_time_table, i, RL_Agent)
+                        obj_UE[j].A2_event = obj_UE[j].handover(RL_Agent, PPO_input,num_of_UE-randshift, num_of_st, servering_st, c_st, E)
+                        servering_st, block_rate, block_table, max_block_rate = calc_num_of_ue_in_cell(obj_UE, num_of_UE-randshift, num_of_st, node_capacity)
+                        Rewards_cal(obj_UE[j], num_of_UE-randshift, block_table,block_rate, node_capacity,  con_time_table, cul_time_table, i, RL_Agent)
                     else:
                        pass
                     # obj_UE[j].A2_event = obj_UE[j].handover(RL_Agent, PPO_input,num_of_UE, num_of_st, servering_st, c_st, E)
