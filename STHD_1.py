@@ -1361,10 +1361,10 @@ def sim(algo, algo_name, timeslot, carrier_bandwidth, num_of_UE, demand, num_of_
     print('sim time step: ' +str(time_step))
     
     #RL_Agent.time_step = time_step
-    
-    angle_time_table = pd.read_csv('ST_298_Telesat_6360_time/ST_angle').T
-    cul_time_table =pd.read_csv('ST_298_Telesat_6360_time/ST_cul_time').T
-    con_time_table =pd.read_csv('ST_298_Telesat_6360_time/ST_connect').T
+    satellites_path = 'ST_298_Telesat_6360_time/'
+    angle_time_table = pd.read_csv(satellites_path+'ST_angle').T
+    cul_time_table =pd.read_csv(satellites_path+'ST_cul_time').T
+    con_time_table =pd.read_csv(satellites_path+'ST_connect').T
     
     for i in range(num_of_UE):
         
@@ -1432,7 +1432,9 @@ def sim(algo, algo_name, timeslot, carrier_bandwidth, num_of_UE, demand, num_of_
             if cover[c]==1:
                 c_st.append(c)
         #print('Cover: '+ str(c_st))
-        randshift = random.randint(0,20)
+        randshift = 0
+        # randshift = random.randint(0,20)
+        
 
                                             
         for j in range(num_of_UE-randshift):
