@@ -330,7 +330,7 @@ s= 2
 #s=2, Max_node_capacity
 #s=3, Random_ST
 #s=4, graph
-num_of_channel = 8
+num_of_channel = 7
 e_greedy =0.3
 #e_greedy = 1  #always random
 # training part
