@@ -1010,9 +1010,9 @@ def Rewards_cal(obj_UE, num_of_UE, num_of_cell_block,block_rate,L, connect_table
     
     if num_of_cell_block[st_ID]==1:
         
-        reward = -10
-        # BR= block_rate
-        # reward = -((BR*BR)/v_table[time][st_ID])*1000
+        # reward = -10
+        BR= block_rate
+        reward = -((BR*BR)/v_table[time][st_ID])*1000
         # print("bR",BR)
         # print("v_table[time][st_ID]",v_table[time][st_ID])
         # print("overload and the reword = ",reward)
@@ -1433,7 +1433,7 @@ def sim(algo, algo_name, timeslot, carrier_bandwidth, num_of_UE, demand, num_of_
                 c_st.append(c)
         #print('Cover: '+ str(c_st))
         randshift = 0
-        randshift = random.randint(0,20)
+        # randshift = random.randint(0,20)
         
 
                                             
