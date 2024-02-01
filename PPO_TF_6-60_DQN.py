@@ -324,13 +324,13 @@ Carrier_bandwidth=200
 Time=3600
 #Time=1000
 power = 35
-Num_of_UE=20
+Num_of_UE=30
 s= 2
 #s=1, Max_serving_time
 #s=2, Max_node_capacity
 #s=3, Random_ST
 #s=4, graph
-num_of_channel = 5
+num_of_channel = 6
 e_greedy =0.3
 #e_greedy = 1  #always random
 # training part
