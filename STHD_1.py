@@ -1380,9 +1380,9 @@ def sim(algo, algo_name, timeslot, carrier_bandwidth, num_of_UE, demand, num_of_
         
         #df = pd.read_csv(f'{em}_{rand}_{time}_sec_{power}_40_slot_1_MH/{em}_{rand}_{time}_sec_{power}_40_slot_1_MH_UE_{i}', index_col=0)
 
-        Algo_1 = algo(algo_name=str(algo), ID=i, hom=3,
-                      num_of_st=num_of_st, demand=demand, time_step= time_step,\
-                      time_th=time_th, st=strategy)
+        # Algo_1 = algo(algo_name=str(algo), ID=i, hom=3,
+        #               num_of_st=num_of_st, demand=demand, time_step= time_step,\
+        #               time_th=time_th, st=strategy)
         
         #Algo_1 = algo(algo_name=str(algo), ID=i, hom=3, data_frame=df,
         #              num_of_micro=num_of_micro, demand=demand, time_step= time_step,\
@@ -1390,9 +1390,9 @@ def sim(algo, algo_name, timeslot, carrier_bandwidth, num_of_UE, demand, num_of_
 
         # Algo_1 = Dual_Connect.Handover(algo_name= str(algo), ID = i, hom = 3, data_frame = df, \
         # #                               num_of_micro = num_of_micro,demand = 160)
-        # Algo_1 = Handover(algo_name=str(algo), ID=i, hom=3,
-        #               num_of_st=num_of_st, demand=demand, time_step= time_step,\
-        #               time_th=time_th, st=strategy)
+        Algo_1 = Handover(algo_name=str(algo), ID=i, hom=3,
+                      num_of_st=num_of_st, demand=demand, time_step= time_step,\
+                      time_th=time_th, st=strategy)
         obj_UE.append(Algo_1)
 
     #print(datetime.datetime.now())
@@ -1434,7 +1434,7 @@ def sim(algo, algo_name, timeslot, carrier_bandwidth, num_of_UE, demand, num_of_
                 c_st.append(c)
         #print('Cover: '+ str(c_st))
         randshift = 0
-        randshift = random.randint(0,20)
+        # randshift = random.randint(0,20)
         
 
                                             
