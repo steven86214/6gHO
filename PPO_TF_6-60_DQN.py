@@ -410,7 +410,8 @@ while time_step <= max_training_timesteps:
 
 
 for i in range(0,6):
-    print(t_agent.buffer.rewards[i])
+    if(t_agent!=None):
+        print(t_agent.buffer.rewards[i])
 
 # for i in t_agent.buffer.rewards:
 #     print(i)
