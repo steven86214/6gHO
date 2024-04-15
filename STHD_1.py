@@ -1434,7 +1434,7 @@ def sim(algo, algo_name, timeslot, carrier_bandwidth, num_of_UE, demand, num_of_
                 c_st.append(c)
         #print('Cover: '+ str(c_st))
         randshift = 0
-        # randshift = random.randint(0,20)
+        randshift = random.randint(0,20)
         
 
                                             
