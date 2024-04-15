@@ -260,7 +260,7 @@ Demand=20
 
 
 Num_of_st=298
-Num_of_UE=40
+Num_of_UE=30
 Demand=50
 #119+18 = 137
 #168+18
@@ -324,7 +324,7 @@ Carrier_bandwidth=200
 Time=3600
 #Time=1000
 power = 35
-Num_of_UE=40
+Num_of_UE=30
 s= 4
 #s=1, Max_serving_time
 #s=2, Max_node_capacity
