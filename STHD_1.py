@@ -1361,8 +1361,8 @@ def sim(algo, algo_name, timeslot, carrier_bandwidth, num_of_UE, demand, num_of_
     print('sim time step: ' +str(time_step))
     
     #RL_Agent.time_step = time_step
-    # satellites_path = 'space_X/'
-    satellites_path = 'ST_298_Telesat_6360_time/'
+    satellites_path = 'space_X/'
+    # satellites_path = 'ST_298_Telesat_6360_time/'
     angle_time_table = pd.read_csv(satellites_path+'ST_angle').T
     cul_time_table =pd.read_csv(satellites_path+'ST_cul_time').T
     con_time_table =pd.read_csv(satellites_path+'ST_connect').T
